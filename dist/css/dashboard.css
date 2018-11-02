@@ -28,7 +28,7 @@ ul {
   background: rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
-@media (max-width: 690px) {
+@media (max-width: 990px) {
   #columns {
     display: block;
   }
