@@ -61,14 +61,26 @@ ul {
 .column-red .drag-item li::before {
   color: #fb7d44;
 }
+.column-red .drag-item a:visited {
+  color: #864224;
+}
 .column-blue .drag-item li::before {
   color: #2a92bf;
+}
+.column-blue .drag-item a:visited {
+  color: #1e6686;
 }
 .column-green .drag-item li::before {
   color: #00b961;
 }
+.column-green .drag-item a:visited {
+  color: #01713c;
+}
 .column-yellow .drag-item li::before {
   color: #f4ce46;
+}
+.column-yellow .drag-item a:visited {
+  color: rgba(244, 206, 70, 0.4);
 }
 .drag-item-list {
   min-height: 50px;
