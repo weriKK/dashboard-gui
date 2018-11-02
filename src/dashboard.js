@@ -1,6 +1,7 @@
-'use struct';
+'use strict';
 
 import { myConfig } from "./config.js";
+import { detectMobile } from "./detectmobilebrowser.js";
 
 function Column(props) {
 	return (
@@ -142,7 +143,9 @@ class App extends React.Component {
   	}
 
 	componentDidUpdate() {
-		this.__enableDragAndDrop();
+		if (!detectMobile()) {
+			this.__enableDragAndDrop();
+		}
 	}
 
   	componentWillUnmount() {

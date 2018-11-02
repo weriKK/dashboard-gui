@@ -14,7 +14,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "npx": "^10.2.0",
-    "webpack": "^4.23.1",
+    "webpack": "^4.24.0",
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {}
