@@ -84,9 +84,10 @@ class FeedBox extends React.Component {
 
 function FeedBoxHeader(props) {
 	//<h2><a href={props.url} target="_blank">{props.text}</a></h2>
+	//<h2>{props.text}</h2>
   return (
 		<span className="drag-item-header">
-			<h2>{props.text}</h2>
+			<h2><a href={props.url} target="_blank">{props.text}</a></h2>
 		</span>
 	);
 }
