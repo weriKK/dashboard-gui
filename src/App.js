@@ -1,11 +1,7 @@
 import './App.css';
 
 import React, { Component } from 'react';
-import {isMobile} from 'react-device-detect';
 import { myConfig } from "./config.js";
-
-var dragula = require('react-dragula');
-
 
 function Column(props) {
 	return (
@@ -148,35 +144,12 @@ class App extends Component {
   	}
 
 	componentDidUpdate() {
-		if (!isMobile) {
-			this.__enableDragAndDrop();
-		}
 	}
 
   	componentWillUnmount() {
     	// runs before the component is removed from the DOM
 		clearInterval(this.timerID);
   	}
-
-	__enableDragAndDrop() {
-		var feedLists = document.querySelectorAll('.drag-item-list');
-
-		dragula(Array.from(feedLists))
-		.on('drag', function(el) {
-			el.classList.add('is-moving');
-		})
-		.on('dragend', function(el) {
-			el.classList.remove('is-moving');
-
-			// add the 'is-moved' class for 600ms then remove it
-			window.setTimeout(function() {
-				el.classList.add('is-moved');
-				window.setTimeout(function() {
-					el.classList.remove('is-moved');
-				}, 200);
-			}, 100);
-		});
-	}
 
 	__getFeedIdx(arr, feedName) {
 		for (var i = 0; i < arr.length; i++) {
