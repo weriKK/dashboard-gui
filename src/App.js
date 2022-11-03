@@ -1,7 +1,11 @@
-'use strict';
+import './App.css';
 
+import React, { Component } from 'react';
+import {isMobile} from 'react-device-detect';
 import { myConfig } from "./config.js";
-import { detectMobile } from "./detectmobilebrowser.js";
+
+var dragula = require('react-dragula');
+
 
 function Column(props) {
 	return (
@@ -23,7 +27,7 @@ function FeedBoxList(props) {
   );
 }
 
-class FeedBox extends React.Component {
+class FeedBox extends Component {
   	constructor(props) {
 	    super(props);
 	    this.state = {
@@ -87,12 +91,12 @@ function FeedBoxHeader(props) {
 	//<h2>{props.text}</h2>
   return (
 		<span className="drag-item-header">
-			<h2><a href={props.url} target="_blank">{props.text}</a></h2>
+			<h2><a href={props.url} target="_blank" rel="noopener noreferrer">{props.text}</a></h2>
 		</span>
 	);
 }
 
-class FeedItem extends React.Component {
+class FeedItem extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -123,13 +127,13 @@ class FeedItem extends React.Component {
 	render() {
 		return (
 			<li>
-				<a className={this.__getClass()} href={this.state.url} target="_blank">{this.state.title}</a>
+				<a className={this.__getClass()} href={this.state.url} target="_blank" rel="noopener noreferrer">{this.state.title}</a>
 			</li>
 		);
 	}
 }
 
-class App extends React.Component {
+class App extends Component {
   	constructor(props) {
     	super(props);
     	this.state = {
@@ -144,7 +148,7 @@ class App extends React.Component {
   	}
 
 	componentDidUpdate() {
-		if (!detectMobile()) {
+		if (!isMobile) {
 			this.__enableDragAndDrop();
 		}
 	}
@@ -157,7 +161,7 @@ class App extends React.Component {
 	__enableDragAndDrop() {
 		var feedLists = document.querySelectorAll('.drag-item-list');
 
-		reactDragula(Array.from(feedLists))
+		dragula(Array.from(feedLists))
 		.on('drag', function(el) {
 			el.classList.add('is-moving');
 		})
@@ -265,4 +269,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default App;
