@@ -1,3 +1,3 @@
 export const myConfig = {
-    API_URI: 'https://werik.com/webfeeds',
+    API_URI: 'https://werik.com/webfeedlist',
 };

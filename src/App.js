@@ -13,7 +13,7 @@ function Column(props) {
 
 function FeedBoxList(props) {
 	const feedBoxes = props.feeds.map((feed) =>
-  		<FeedBox title={feed.title} url={feed.url} resource={feed.resource} limit={feed.itemLimit} key={feed.title} />
+  		<FeedBox title={feed.title} url={feed.url} resource={feed.resource} key={feed.title} />
 	);
 
 	return (
@@ -31,14 +31,13 @@ class FeedBox extends Component {
 			title: props.title,
 			url: props.url,
 			resource: props.resource,
-			limit: props.limit
 		};
   	}
 
   	componentDidMount() {
 	    // runs after the component output has been rendered to the DOM
 		this.__fetchRSSFeedItems();
-		this.timerID = setInterval(() => this.__fetchRSSFeedItems(), 5*60*1000);
+		this.timerID = setInterval(() => this.__fetchRSSFeedItems(), 2*60*1000);
   	}
 
 	componentDidUpdate() {
@@ -51,7 +50,7 @@ class FeedBox extends Component {
 
 	__fetchRSSFeedItems() {
 		//console.log("Fetching", this.state.title, "items @", this.state.resource, '...');
-		fetch(this.state.resource + "?limit=" + this.state.limit)
+		fetch(this.state.resource)
 		.then(response => response.json())
 		.then(respData => {
 			const items = respData.Items;
@@ -202,7 +201,6 @@ class App extends Component {
 					let col  		 = feeds[i].Column;
 					let url  		 = feeds[i].Url;
 					let resource = feeds[i].Resource;
-					let itemLimit = feeds[i].ItemLimit;
 
 					this.__initFeedColumn(state.feedColumns, col);
 
@@ -214,7 +212,6 @@ class App extends Component {
 							title: name,
 							url: url,
 							resource: resource,
-							itemLimit: itemLimit,
 							canRemove: false
 						};
 						state.feedColumns[col].feeds.push(feed);
