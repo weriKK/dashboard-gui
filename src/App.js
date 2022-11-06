@@ -53,7 +53,7 @@ class FeedBox extends Component {
 		fetch(this.state.resource)
 		.then(response => response.json())
 		.then(respData => {
-			const items = respData.Items;
+			const items = respData.items;
 
 			this.setState(function(state, props) {
 				return { items: items };
@@ -66,7 +66,7 @@ class FeedBox extends Component {
 		let feedItems = [];
 		if ( this.state.items ) {
 		  	feedItems = this.state.items.map((item) =>
-		    	<FeedItem url={item.Url} title={item.Title} description={item.Description} published={item.Published} key={item.Url} />
+		    	<FeedItem url={item.url} title={item.title} published={item.published} key={item.url} />
 		  	);
 		}
 
